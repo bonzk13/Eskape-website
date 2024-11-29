@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EsKape - Student Coffee Hub</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap">
+    <style>
+         /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #FAF3E0;
+            color: #4E342E;
+            line-height: 1.6;
+            font-family: 'Lora', serif;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: #3E2723;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+        .logo h1 {
+           font-family: 'Amatic SC', cursive; /* Handwritten font for h1 */
+            font-size: 4rem;
+            font-weight: 700;
+            color: #D7CCC8;
+        }
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        nav ul li a {
+            color: #D7CCC8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #FFAB91;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://i.pinimg.com/originals/7e/8d/20/7e8d20836d8f2c29df26dc3b5dce86a7.gif') center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero h2 {
+            position: relative;
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            z-index: 2;
+            color: #FFAB91;
+        }
+        .hero p {
+            position: relative;
+            font-size: 1.4rem;
+            margin: 1rem 0 2rem;
+            z-index: 2;
+            color: #FFCCBC;
+        }
+        .hero button {
+            position: relative;
+            z-index: 2;
+            padding: 0.8rem 2.5rem;
+            border: none;
+            background: #6D4C41;
+            color: #FFF3E0;
+            font-size: 1.rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 5px;
+        }
+        .hero button:hover {
+            background: #4E342E;
+        }
+
+         /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background-color: #FFF3E0;
+            text-align: center;
+        }
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #5D4037;
+            margin-bottom: 1.5rem;
+        }
+        .about p {
+            max-width: 800px;
+            margin: auto;
+            color: #4E342E;
+            font-size: 1.2rem;
+            line-height: 1.8;
+           font-family: 'Playfair Display', serif;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .menu h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .menu .item {
+            position: relative;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+        .menu .item:hover {
+            transform: scale(1.05);
+        }
+        .menu .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .menu .item .overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            width: 100%;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+        .menu .item:hover .overlay {
+            opacity: 1;
+        }
+		/* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background-color: #FFF3E0;
+            text-align: center;
+			font-size: 1.rem;
+        }
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #5D4037;
+            margin-bottom: 1 rem;
+        }
+        .contact p {
+		font-family: 'Playfair Display', serif;
+            color: #4E342E;
+            font-size: 1.3rem;
+            line-height: 1.5;
+			
+		}
+        .contact a {
+            display: inline-block;
+            margin-top: 3 rem;
+            color: #6D4C41;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px solid #6D4C41;
+            transition: border-color 0.5s;
+        }
+        .contact a:hover {
+            border-color: #FFAB91;
+        }
+		
+         /* Footer */
+        footer {
+            background-color: #FFAB91;
+            color: #3E2723;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+        footer a {
+            color: #FAF3E0;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+			}
+        footer a:hover {
+            color: #e67e22;
+        }	
+        /* Media Queries */
+        @media (max-width: 600px)
+        background-color: #FFF3E0;		{
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .about h2, .menu h2 {
+                font-size: 2rem;
+            }
+        }
+        /* Media Queries */
+        @media (max-width: 768px)
+		background-color: #FFF3E0;
+     
+		{
+            .hero h2 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .about h2, .menu h2 { font-size: 2rem; }	
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>EsKape</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h2>Discover Knowledge with Every Cup </h2>
+        <p>Perfect for late-night study sessions, brainstorming, and a caffeine fix!</p>
+        <button onclick="location.href='#menu'">Explore Our Menu</button>
+    </section>
+	
+	<!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p><b>EsKape</b> is your coffee sanctuary on campus, a place where students, teachers, and coffee lovers gather for a perfect cup and inspiration. We believe in quality, creativity, and providing an inviting space for everyone to enjoy. Our mission is to foster community, creativity, and connection through the love of coffee.</p>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-items">
+            <div class="item">
+                <img src="https://skinnymixes.co.uk/cdn/shop/articles/hazelnut_latte.jpg?v=1689829717" alt="Hazelnut Frappe">
+                <h3>Hazelnut Frappe Coffee</h3>
+				<span><b>Price:₱80</b></span>
+                <p>A creamy, nutty blend of chilled coffee and hazelnut, topped with whipped cream. Pure indulgence in every sip.</p>
+            </div>
+            <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT12AQtEzCUaCcU1GieIIPR5Rx6E2K-KuD9ig&s" alt="Peppermint">
+                <h3>Peppermint Coffee</h3>
+				<span><b>Price:₱75</b></span>
+                <p>A festive latte with refreshing peppermint syrup, steamed milk, and espresso. Perfect for a cool, minty pick-me-up, especially around the holidays.</p>
+            </div>
+            <div class="item">
+                <img src="https://athome.starbucks.com/sites/default/files/2021-06/1_CAH_CaffeMocha_Hdr_2880x16602.jpg" alt="Mocha">
+                <h3>Mocha Coffee</h3>
+				 <span><b>Price:₱75</b></span>
+                <p>You can’t go wrong with mocha, which is the perfect mix of richness and sweetness. It blends well with milk, chocolate, and coffee.</p>
+               
+            </div>
+            <div class="item">
+                <img src="https://munchingwithmariyah.com/wp-content/uploads/2020/06/IMG_0748.jpg" alt="Matcha Latte">
+                <h3>Matcha Latte Coffee</h3>
+				<span><b>Price:₱75</b></span>
+                <p>Smooth green tea powder with steamed milk. Earthy, vibrant, and energizing.</p>
+                
+            </div>
+			<div class="item">
+                <img src="https://i.pinimg.com/564x/a9/a8/cb/a9a8cb771cd877bb5ac5f7e3e0f39279.jpg" alt="Pumpkin Spice">
+                <h3>Pumpkin Spice</h3>
+				<span><b>Price:₱80</b></span>
+                <p>Creamy espresso mixed with steamed milk and pumpkin spice syrup, topped with whipped cream. The cozy flavor of fall in a cup!</p>
+                
+            </div>
+            <div class="item">
+                <img src="https://familyaroundthetable.com/wp-content/uploads/2019/06/Iced-Birthday-Cake-Latte1.jpg" alt="Birthday Cake">
+                <h3>Birthday Cake Coffee</h3>
+				<span><b>Price:₱90</b></span>
+                <p>Sweet, creamy coffee with vanilla and sprinkles. Like a party in your cup!</p>
+                
+            </div>
+			<div class="item">
+                <img src="https://i.pinimg.com/736x/37/56/e8/3756e848fa22520e7e934b0bfc513550.jpg" alt="Red Eye">
+                <h3>Red Eye Coffee</h3>
+				<span><b>Price:₱35</b></span>
+                <p>A strong brew of coffee with a shot of espresso. Perfect for a serious energy boost!</p>
+                
+            </div>
+			<div class="item">
+                <img src="https://i.pinimg.com/564x/75/c2/ec/75c2ec1cd80b64e683cd35a849e9aec2.jpg" alt="Americano">
+                <h3>Americano Coffee</h3>
+				<span><b>Price:₱35</b></span>
+                <p>Espresso diluted with hot water for a rich, bold flavor. A simple, classic coffee choice!</p>
+                
+            </div>
+        </div>
+    </section>
+	
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <p>Have questions? Want to book our space for an event? Reach out to us below.</p>
+        <div>
+<form>
+<h1>Contact Us</h1>
+<label>Email:</label>
+<input type= "email"><br><br>
+<label>Contact No:</label>
+<input type= "Contact No."><br><br>
+<button>Send</button>
+</div>
+</form>
+			
+ <!-- Footer Section -->
+    <footer>
+        <h3><p>&copy; 2024 EsKape | Designed by Group 1 IST 1-A</p></h3>
+        <p>Follow us on:
+	<nav>
+
+<li><a href="https://www.facebook.com/profile.php?id=61568530965118">Facebook</a></li>
+<li><a href="https://www.instagram.com/eskape24.7?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a></li>
+        </p>
+    </footer>
+</body>
+</html>
